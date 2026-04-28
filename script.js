@@ -150,15 +150,10 @@ if (contactForm && statusMessage) {
     const email = String(formData.get('email') || '').trim();
     const projectType = String(formData.get('projectType') || '').trim();
     const message = String(formData.get('message') || '').trim();
-    const website = String(formData.get('website') || '').trim();
+    const contactTime = String(formData.get('contact_time') || '').trim();
 
     if (!name || !email || !projectType || !message) {
       statusMessage.textContent = 'Please complete all fields before sending.';
-      return;
-    }
-
-    if (website) {
-      statusMessage.textContent = 'Unable to send right now. Please try again.';
       return;
     }
 
@@ -176,7 +171,7 @@ if (contactForm && statusMessage) {
           email,
           projectType,
           message,
-          website
+          contact_time: contactTime
         })
       });
 

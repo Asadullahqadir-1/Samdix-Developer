@@ -23,9 +23,9 @@ module.exports = async function handler(req, res) {
   const email = String(body.email || '').trim();
   const projectType = String(body.projectType || '').trim();
   const message = String(body.message || '').trim();
-  const website = String(body.website || '').trim();
+  const contactTime = String(body.contact_time || '').trim();
 
-  if (website) {
+  if (contactTime) {
     return res.status(200).json({ ok: true });
   }
 
