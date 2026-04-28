@@ -74,8 +74,8 @@ main {
 
 .brand {
   display: inline-flex;
-  width: 62px;
-  height: 62px;
+  width: 92px;
+  height: 92px;
   background: transparent;
   border: 0;
   padding: 0;
@@ -635,8 +635,8 @@ h1 span {
   }
 
   .brand {
-    width: 60px;
-    height: 60px;
+    width: 74px;
+    height: 74px;
   }
 
   h1 {
