@@ -142,7 +142,7 @@ const contactForm = document.querySelector('#contact-form');
 const statusMessage = document.querySelector('#form-status');
 
 if (contactForm && statusMessage) {
-  contactForm.addEventListener('submit', (event) => {
+  contactForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const formData = new FormData(contactForm);
@@ -150,20 +150,46 @@ if (contactForm && statusMessage) {
     const email = String(formData.get('email') || '').trim();
     const projectType = String(formData.get('projectType') || '').trim();
     const message = String(formData.get('message') || '').trim();
+    const website = String(formData.get('website') || '').trim();
 
     if (!name || !email || !projectType || !message) {
       statusMessage.textContent = 'Please complete all fields before sending.';
       return;
     }
 
-    const recipients = 'samdixdev@gmail.com,Samdixdeveloper@gmail.com';
-    const subject = encodeURIComponent(`New Project Inquiry: ${projectType}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nProject Type: ${projectType}\n\nProject Brief:\n${message}`
-    );
+    if (website) {
+      statusMessage.textContent = 'Unable to send right now. Please try again.';
+      return;
+    }
 
-    statusMessage.textContent = 'Opening your email app to send the inquiry...';
-    window.location.href = `mailto:${recipients}?subject=${subject}&body=${body}`;
-    contactForm.reset();
+    statusMessage.textContent = 'Sending your message...';
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          projectType,
+          message,
+          website
+        })
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || result.ok === false) {
+        throw new Error(result.error || 'Submission failed');
+      }
+
+      statusMessage.textContent = 'Message sent successfully. We will get back to you soon.';
+      contactForm.reset();
+    } catch (error) {
+      statusMessage.textContent = 'Unable to send right now. Please try again in a moment or email samdixdev@gmail.com.';
+    }
   });
 }

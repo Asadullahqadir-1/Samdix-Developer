@@ -262,7 +262,14 @@
             <p><strong>Email</strong><br /><a href="mailto:samdixdev@gmail.com">samdixdev@gmail.com</a><br /><a href="mailto:Samdixdeveloper@gmail.com">Samdixdeveloper@gmail.com</a></p>
             <p><strong>Opening Hours</strong><br />Monday - Sunday</p>
           </div>
-          <form id="contact-form" class="contact-form" novalidate>
+          <form
+            id="contact-form"
+            class="contact-form"
+            action="/api/contact"
+            method="POST"
+            novalidate
+          >
+            <input type="text" name="website" tabindex="-1" autocomplete="off" class="sr-only" />
             <label>
               First Name
               <input type="text" name="name" autocomplete="name" required />

@@ -11,3 +11,24 @@ Static portfolio and agency-style landing page ready for Vercel deployment.
 5. Deploy.
 
 Vercel will serve `index.html` from the project root.
+
+## Contact Form With Gmail
+
+This project includes a Vercel serverless contact form endpoint at `/api/contact`.
+
+### Required Gmail Setup
+
+1. Use the Gmail account that should receive the messages.
+2. Turn on Google 2-Step Verification for that account.
+3. Create an App Password in Google Account settings.
+4. In Vercel, open `Project Settings -> Environment Variables`.
+5. Add these variables:
+	- `GMAIL_USER` = `samdixdev@gmail.com`
+	- `GMAIL_APP_PASSWORD` = your 16-character Google App Password
+6. Redeploy the project.
+
+### Important Notes
+
+- Do not use your normal Gmail password.
+- Gmail App Passwords require 2-Step Verification to be enabled.
+- The form sends mail to `GMAIL_USER` and sets the visitor email as `replyTo`.
