@@ -189,7 +189,10 @@ if (contactForm && statusMessage) {
       statusMessage.textContent = 'Message sent successfully. We will get back to you soon.';
       contactForm.reset();
     } catch (error) {
-      statusMessage.textContent = 'Unable to send right now. Please try again in a moment or email samdixdev@gmail.com.';
+      const errorMessage = error instanceof Error ? error.message : '';
+      statusMessage.textContent = errorMessage
+        ? `Unable to send: ${errorMessage}`
+        : 'Unable to send right now. Please try again in a moment or email samdixdev@gmail.com.';
     }
   });
 }

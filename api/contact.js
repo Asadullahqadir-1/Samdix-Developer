@@ -6,8 +6,10 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
-  const gmailUser = process.env.GMAIL_USER;
-  const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
+  const gmailUser = String(process.env.GMAIL_USER || '').trim();
+  const gmailAppPassword = String(process.env.GMAIL_APP_PASSWORD || '')
+    .replace(/\s+/g, '')
+    .trim();
 
   if (!gmailUser || !gmailAppPassword) {
     return res.status(500).json({
@@ -84,9 +86,16 @@ module.exports = async function handler(req, res) {
 
     return res.status(200).json({ ok: true });
   } catch (error) {
+    console.error('Contact API mail error:', error);
+
+    const errorCode = error && typeof error === 'object' ? String(error.code || '') : '';
+    const authFailed = errorCode === 'EAUTH';
+
     return res.status(500).json({
       ok: false,
-      error: 'Unable to send message right now.'
+      error: authFailed
+        ? 'Email authentication failed. Recheck GMAIL_USER, GMAIL_APP_PASSWORD, and Gmail 2-Step Verification.'
+        : 'Unable to send message right now.'
     });
   }
 };
