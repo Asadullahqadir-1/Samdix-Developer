@@ -44,7 +44,53 @@ function removeLogoBackground(img) {
     }
 
     context.putImageData(imageData, 0, 0);
-    img.src = canvas.toDataURL('image/png');
+
+    let minX = canvas.width;
+    let minY = canvas.height;
+    let maxX = -1;
+    let maxY = -1;
+
+    for (let y = 0; y < canvas.height; y += 1) {
+      for (let x = 0; x < canvas.width; x += 1) {
+        const alpha = pixels[(y * canvas.width + x) * 4 + 3];
+        if (alpha < 18) {
+          continue;
+        }
+
+        if (x < minX) minX = x;
+        if (y < minY) minY = y;
+        if (x > maxX) maxX = x;
+        if (y > maxY) maxY = y;
+      }
+    }
+
+    if (maxX >= minX && maxY >= minY) {
+      const trimmedCanvas = document.createElement('canvas');
+      const trimmedWidth = maxX - minX + 1;
+      const trimmedHeight = maxY - minY + 1;
+
+      trimmedCanvas.width = trimmedWidth;
+      trimmedCanvas.height = trimmedHeight;
+
+      const trimmedContext = trimmedCanvas.getContext('2d');
+      if (trimmedContext) {
+        trimmedContext.drawImage(
+          canvas,
+          minX,
+          minY,
+          trimmedWidth,
+          trimmedHeight,
+          0,
+          0,
+          trimmedWidth,
+          trimmedHeight
+        );
+        img.src = trimmedCanvas.toDataURL('image/png');
+      }
+    } else {
+      img.src = canvas.toDataURL('image/png');
+    }
+
     img.dataset.bgRemoved = 'true';
   };
 

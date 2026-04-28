@@ -74,8 +74,8 @@ main {
 
 .brand {
   display: inline-flex;
-  width: 92px;
-  height: 92px;
+  width: 128px;
+  height: 128px;
   background: transparent;
   border: 0;
   padding: 0;
@@ -583,6 +583,11 @@ h1 span {
     flex-wrap: wrap;
   }
 
+  .brand {
+    width: 98px;
+    height: 98px;
+  }
+
   .main-nav {
     width: 100%;
     order: 3;
@@ -635,8 +640,8 @@ h1 span {
   }
 
   .brand {
-    width: 74px;
-    height: 74px;
+    width: 82px;
+    height: 82px;
   }
 
   h1 {
