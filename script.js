@@ -125,7 +125,7 @@ const staggerObserver = new IntersectionObserver(
 
       const items = entry.target.querySelectorAll('.stagger-item');
       items.forEach((item, index) => {
-        item.style.animationDelay = `${index * 90}ms`;
+        item.style.animationDelay = `${index * 170}ms`;
         item.classList.add('is-visible');
       });
 
@@ -187,7 +187,7 @@ if (contactForm && statusMessage) {
       const errorMessage = error instanceof Error ? error.message : '';
       statusMessage.textContent = errorMessage
         ? `Unable to send: ${errorMessage}`
-        : 'Unable to send right now. Please try again in a moment or email samdixdev@gmail.com.';
+        : 'Unable to send right now. Please try again in a moment or email Contact@samdix.dev.';
     }
   });
 }

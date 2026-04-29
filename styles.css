@@ -131,7 +131,7 @@ main {
   min-height: calc(100vh - 92px);
   padding: 0.7rem 0 1.6rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1.3rem;
   align-items: center;
 }
@@ -179,35 +179,6 @@ h1 span {
   display: flex;
   gap: 0.8rem;
   flex-wrap: wrap;
-}
-
-.hero-visual {
-  position: relative;
-  min-height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-circle {
-  width: min(420px, 66vw);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--gold);
-  position: absolute;
-}
-
-.hero-portrait {
-  position: relative;
-  z-index: 2;
-  width: min(390px, 62vw);
-  height: min(390px, 62vw);
-  object-fit: cover;
-  object-position: top center;
-  border-radius: 50%;
-  transform: none;
-  mix-blend-mode: normal;
-  filter: none;
 }
 
 .waves {
@@ -585,7 +556,7 @@ h1 span {
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 450ms ease, transform 450ms ease;
+  transition: opacity 850ms ease, transform 850ms ease;
 }
 
 .reveal.is-visible {
@@ -599,7 +570,7 @@ h1 span {
 }
 
 .stagger-item.is-visible {
-  animation: staggerIn 420ms ease forwards;
+  animation: staggerIn 900ms ease forwards;
 }
 
 @keyframes staggerIn {
@@ -643,19 +614,6 @@ h1 span {
   .blog-grid,
   .counter-band {
     grid-template-columns: 1fr;
-  }
-
-  .hero-visual {
-    min-height: 420px;
-  }
-
-  .hero-circle {
-    width: min(420px, 86vw);
-  }
-
-  .hero-portrait {
-    width: min(400px, 83vw);
-    height: min(400px, 83vw);
   }
 
   .counter-band span {

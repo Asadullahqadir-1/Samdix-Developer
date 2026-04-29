@@ -23,7 +23,7 @@ This project includes a Vercel serverless contact form endpoint at `/api/contact
 3. Create an App Password in Google Account settings.
 4. In Vercel, open `Project Settings -> Environment Variables`.
 5. Add these variables:
-	- `GMAIL_USER` = `samdixdev@gmail.com`
+	- `GMAIL_USER` = `Contact@samdix.dev`
 	- `GMAIL_APP_PASSWORD` = your 16-character Google App Password
 6. Redeploy the project.
 
