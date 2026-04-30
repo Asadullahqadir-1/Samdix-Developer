@@ -113,10 +113,20 @@ const revealObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.2 }
+  {
+    threshold: 0.01,
+    rootMargin: '0px 0px -10% 0px'
+  }
 );
 
-revealElements.forEach((el) => revealObserver.observe(el));
+revealElements.forEach((el) => {
+  if (el.getBoundingClientRect().height >= window.innerHeight * 0.9) {
+    el.classList.add('is-visible');
+    return;
+  }
+
+  revealObserver.observe(el);
+});
 
 const staggerObserver = new IntersectionObserver(
   (entries) => {
