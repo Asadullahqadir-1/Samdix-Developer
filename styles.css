@@ -388,6 +388,11 @@ h1 {
   text-align: center;
 }
 
+.counter-band.reveal {
+  opacity: 1;
+  transform: none;
+}
+
 .counter-band strong {
   display: block;
   color: var(--gold);
