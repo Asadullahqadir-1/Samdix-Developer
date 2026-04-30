@@ -450,11 +450,13 @@ h1 {
   box-shadow: 0 12px 30px rgba(5, 15, 24, 0.08);
 }
 
-.ai-portfolio-card img {
+.ai-portfolio-card img,
+.ai-portfolio-card video {
   width: 100%;
   height: 220px;
   object-fit: cover;
   display: block;
+  background: #0a151f;
 }
 
 .ai-portfolio-card div {
