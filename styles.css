@@ -428,6 +428,20 @@ h1 {
   font-size: 1.1rem;
 }
 
+.blog-grid h4 a {
+  color: #1a2733;
+  text-decoration: none;
+}
+
+.blog-grid h4 a:hover {
+  color: #a16908;
+}
+
+.blog-actions {
+  margin-top: 1.4rem;
+  text-align: center;
+}
+
 .cta-strip {
   text-align: center;
   color: #fff;
@@ -523,13 +537,24 @@ h1 {
 
 .map-wrap {
   width: min(1140px, calc(100% - 2rem));
-  margin: 0 auto 2rem;
+  margin: 0 auto 2.4rem;
+}
+
+.map-shell {
+  width: min(1140px, 100%);
+  margin: 0 auto;
+  border: 1px solid rgba(8, 29, 42, 0.12);
+  box-shadow: 0 18px 45px rgba(6, 14, 24, 0.12);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
 }
 
 .map-wrap iframe {
   width: 100%;
+  display: block;
   border: 0;
-  height: 340px;
+  height: 380px;
 }
 
 .site-footer {
